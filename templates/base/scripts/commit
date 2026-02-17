@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <message> <files...>" >&2
+  exit 1
+fi
+git add "${@:2}"
+git commit -m "$1"
+echo "✅ Committed: $1"

@@ -3,6 +3,7 @@ summary: "Windows (WSL2) support + companion app status"
 read_when:
   - Installing OpenClaw on Windows
   - Looking for Windows companion app status
+  - Learning from OpenClaw to build your own projects
 title: "Windows (WSL2)"
 ---
 
@@ -15,6 +16,8 @@ Windows might be trickier. WSL2 gives you the full Linux experience — one comm
 to install: `wsl --install`.
 
 Native Windows companion apps are planned.
+
+**For learning from OpenClaw to build your own projects on Windows**, see the [Learning Guide](/reference/learning-guide).
 
 ## Install (WSL2)
 

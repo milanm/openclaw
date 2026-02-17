@@ -8,6 +8,12 @@ Welcome to the lobster tank! 🦞
 - **Discord:** https://discord.gg/qkhbAGHRBT
 - **X/Twitter:** [@steipete](https://x.com/steipete) / [@openclaw](https://x.com/openclaw)
 
+## For Learners & New Projects
+
+If you're here to **learn from OpenClaw** and build your own projects:
+- **[Learning Guide](docs/reference/learning-guide.md)** - Comprehensive guide for learning patterns, architecture, and best practices
+- **Windows Users:** See the [Learning Guide Windows section](docs/reference/learning-guide.md#windows-setup-wsl2) for WSL2 setup
+
 ## Maintainers
 
 - **Peter Steinberger** - Benevolent Dictator
@@ -81,6 +87,10 @@ Please include in your PR:
 - [ ] Confirm you understand what the code does
 
 AI PRs are first-class citizens here. We just want transparency so reviewers know what to look for.
+
+**For AI coding assistants:** See the [AI Coding Assistant Guide](docs/reference/ai-coding-assistant-guide.md) for all development files, locations, and guidelines.
+
+**Note:** The repository contains AI setup files that serve dual purposes. See [AI Setup Files - Dual Purpose](docs/reference/ai-setup-files.md) for details on how `/AGENTS.md` and related files are used both for developing OpenClaw and for configuring users' OpenClaw AI assistants.
 
 ## Current Focus & Roadmap 🗺
 
