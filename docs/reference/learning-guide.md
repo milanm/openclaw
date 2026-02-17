@@ -12,6 +12,30 @@ read_when:
 
 This guide helps you learn from OpenClaw's architecture, patterns, and best practices to build your own projects.
 
+## 🚀 Quick Start: Project Scaffolding
+
+**NEW**: Use our ready-to-go project template based on OpenClaw patterns!
+
+```bash
+# Create a new project from the template
+./scripts/scaffold-project.sh my-awesome-project
+
+# Or manually copy the template
+cp -r templates/project-scaffolding my-project
+cd my-project
+npm install && npx prek install
+```
+
+**What you get:**
+- ✅ TypeScript with strict mode
+- ✅ Modern tools (Oxlint, Oxfmt, Vitest)
+- ✅ Pre-commit hooks
+- ✅ AI assistant ready (AGENTS.md)
+- ✅ GitHub Actions CI
+- ✅ VSCode integration
+
+See [templates/README.md](../../templates/README.md) for details.
+
 ## Table of Contents
 
 1. [Windows Setup](#windows-setup-wsl2)
