@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Scoped commit helper
+# Usage: ./scripts/commit "commit message" file1 file2 ...
+
+set -euo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <message> <files...>" >&2
+  echo "Example: $0 'feat: add feature' src/feature.ts" >&2
+  exit 1
+fi
+
+MESSAGE="$1"
+shift
+FILES=("$@")
+
+# Verify files exist
+for file in "${FILES[@]}"; do
+  if [ ! -e "$file" ]; then
+    echo "Error: File not found: $file" >&2
+    exit 1
+  fi
+done
+
+# Stage files
+git add "${FILES[@]}"
+
+# Commit
+git commit -m "$MESSAGE"
+
+echo "✅ Committed: $MESSAGE"
+echo "📝 Files: ${FILES[*]}"

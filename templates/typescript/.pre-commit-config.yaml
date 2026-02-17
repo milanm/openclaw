@@ -1,0 +1,36 @@
+# Pre-commit hooks
+# Install: npx prek install
+# Run manually: npx prek run --all-files
+
+repos:
+  # Basic file hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '^(dist/|.*\.snap$)'
+      - id: end-of-file-fixer
+        exclude: '^(dist/|.*\.snap$)'
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: check-merge-conflict
+
+  # TypeScript linting and formatting
+  - repo: local
+    hooks:
+      # Oxlint
+      - id: oxlint
+        name: oxlint
+        entry: npx oxlint --fix
+        language: system
+        types: [ts, tsx]
+        pass_filenames: false
+
+      # Oxfmt
+      - id: oxfmt
+        name: oxfmt
+        entry: npx oxfmt --write
+        language: system
+        types: [ts, tsx]
+        pass_filenames: false

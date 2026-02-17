@@ -1,53 +1,78 @@
 # OpenClaw Project Templates
 
-This directory contains project templates and scaffolding tools to help you start new projects using OpenClaw's best practices.
+This directory contains project templates and scaffolding tools to help you start new projects using OpenClaw's best practices for **any technology stack**.
 
 ## Available Templates
 
-### 1. Project Scaffolding
+### Multi-Language Support
 
-**Location:** `templates/project-scaffolding/`
+Choose from templates for different languages and platforms:
 
-A complete TypeScript project template with modern tooling and AI assistant integration.
+- **TypeScript** (`typescript/`) - Modern TypeScript with Oxlint, Oxfmt, Vitest
+- **C#/.NET** (`csharp/`) - C#/.NET with modern tooling
+- **Ruby** (`ruby/`) - Ruby with RuboCop, RSpec
+- **Python** (`python/`) - Python with Black, Ruff, pytest
+- **Base** (`base/`) - Generic template for any language
 
-**Features:**
-- ✅ TypeScript with strict mode
-- ✅ Modern build tools (Oxlint, Oxfmt, Vitest)
-- ✅ Pre-commit hooks for quality gates
+**Core Features (all templates):**
 - ✅ AI assistant ready (AGENTS.md, CLAUDE.md)
-- ✅ GitHub Actions CI pipeline
+- ✅ Language-specific best practices
+- ✅ Quality gates and testing setup
+- ✅ CI/CD configuration
 - ✅ VSCode integration
+- ✅ OpenClaw patterns baked in
 
 **Quick Start:**
 
 ```bash
-# Option 1: Use the scaffolding script
+# TypeScript (default)
 ./scripts/scaffold-project.sh my-project
 
-# Option 2: Manual copy
-cp -r templates/project-scaffolding my-project
-cd my-project
-npm install
-npx prek install
+# C#/.NET
+./scripts/scaffold-project.sh --lang csharp MyDotNetApp
+
+# Ruby
+./scripts/scaffold-project.sh --lang ruby my-ruby-app
+
+# Python
+./scripts/scaffold-project.sh --lang python my-python-app
+
+# Generic template (customize for any language)
+./scripts/scaffold-project.sh --lang base my-custom-project
 ```
 
-**What's Included:**
+**Template Structure:**
 
 ```
-project-scaffolding/
-├── .github/workflows/ci.yml    # GitHub Actions CI
-├── .vscode/                    # VSCode settings
-├── scripts/commit              # Scoped commit helper
-├── src/index.ts               # Example source
-├── test/index.test.ts         # Example test
-├── .gitignore                 # Git ignores
-├── .pre-commit-config.yaml    # Pre-commit hooks
-├── AGENTS.md                  # AI assistant instructions
-├── CLAUDE.md                  # Symlink to AGENTS.md
-├── package.json               # Dependencies & scripts
-├── README.md                  # Template documentation
-├── tsconfig.json              # TypeScript config
-└── vitest.config.ts           # Test config
+templates/
+├── base/                      # Generic template (any language)
+│   ├── AGENTS.md              # Generic AI assistant guidelines
+│   ├── CLAUDE.md              # Symlink for Claude Code
+│   ├── README.md              # Setup instructions
+│   └── scripts/commit         # Scoped commit helper
+│
+├── typescript/                # TypeScript template
+│   ├── .github/workflows/     # GitHub Actions CI
+│   ├── .vscode/               # VSCode settings
+│   ├── src/index.ts           # Example TypeScript source
+│   ├── test/index.test.ts     # Example tests (Vitest)
+│   ├── package.json           # npm dependencies
+│   ├── tsconfig.json          # TypeScript strict config
+│   └── vitest.config.ts       # Test configuration
+│
+├── csharp/                    # C#/.NET template
+│   ├── AGENTS.md              # C# coding guidelines
+│   └── README.md              # .NET setup instructions
+│
+├── ruby/                      # Ruby template
+│   ├── AGENTS.md              # Ruby coding guidelines
+│   └── README.md              # Ruby setup instructions
+│
+├── python/                    # Python template
+│   ├── AGENTS.md              # Python coding guidelines
+│   └── README.md              # Python setup instructions
+│
+└── project-scaffolding/       # Legacy TypeScript (deprecated)
 ```
 
 ## Using the Scaffolding Script

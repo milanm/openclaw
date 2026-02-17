@@ -1,0 +1,34 @@
+{
+  "name": "my-project",
+  "version": "0.1.0",
+  "description": "My TypeScript project",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "oxlint src test",
+    "format": "oxfmt --check src test",
+    "format:fix": "oxfmt --write src test",
+    "check": "npm run lint && npm run format && npm run typecheck",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "oxlint": "^0.15.0",
+    "typescript": "^5.3.3",
+    "vitest": "^2.0.0",
+    "prek": "^0.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

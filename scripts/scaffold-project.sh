@@ -1,106 +1,78 @@
 #!/usr/bin/env bash
 # Create a new project from the OpenClaw scaffolding template
-# Usage: ./scripts/scaffold-project.sh <project-name> [directory]
+# Usage: ./scripts/scaffold-project.sh [--lang <language>] <project-name> [directory]
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="$(cd "$SCRIPT_DIR/../templates/project-scaffolding" && pwd)"
+TEMPLATE_BASE_DIR="$(cd "$SCRIPT_DIR/../templates" && pwd)"
 
-# Colors for output
+# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+BLUE='\033[0;34m'
+NC='\033[0m'
 
 usage() {
   cat << EOF
-Usage: $0 <project-name> [directory]
+Usage: $0 [--lang <language>] <project-name> [directory]
 
-Create a new TypeScript project from OpenClaw scaffolding template.
+Create a new project from OpenClaw scaffolding template.
+
+Options:
+  --lang <language>   Choose language template (default: typescript)
+                      Available: typescript, csharp, ruby, python, base
 
 Arguments:
-  project-name    Name of the new project (required)
-  directory       Target directory (default: ./project-name)
+  project-name        Name of the new project (required)
+  directory           Target directory (default: ./project-name)
 
-Example:
+Examples:
   $0 my-awesome-project
-  $0 my-api ./projects/my-api
-
-Features:
-  - TypeScript with strict mode
-  - Modern tooling (Oxlint, Oxfmt, Vitest)
-  - Pre-commit hooks
-  - AI assistant ready (AGENTS.md)
-  - GitHub Actions CI (optional)
-  - VSCode integration
+  $0 --lang typescript my-api
+  $0 --lang csharp MyDotNetApp
+  $0 --lang ruby my-ruby-app
+  $0 --lang python my-python-app
+  $0 --lang base my-custom-project
 
 EOF
   exit 1
 }
 
-if [ $# -lt 1 ]; then
-  usage
-fi
+LANGUAGE="typescript"
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --lang) LANGUAGE="$2"; shift 2 ;;
+    --help|-h) usage ;;
+    -*) echo -e "${RED}Unknown option: $1${NC}" >&2; usage ;;
+    *) break ;;
+  esac
+done
+
+[ $# -lt 1 ] && usage
 
 PROJECT_NAME="$1"
 TARGET_DIR="${2:-./$PROJECT_NAME}"
+TEMPLATE_DIR="$TEMPLATE_BASE_DIR/$LANGUAGE"
 
-# Validate project name
-if [[ ! "$PROJECT_NAME" =~ ^[a-z0-9-]+$ ]]; then
-  echo -e "${RED}Error: Project name must contain only lowercase letters, numbers, and hyphens${NC}" >&2
-  exit 1
-fi
+[ ! -d "$TEMPLATE_DIR" ] && echo -e "${RED}Error: Language '$LANGUAGE' not found${NC}" >&2 && exit 1
+[[ ! "$PROJECT_NAME" =~ ^[a-zA-Z0-9_-]+$ ]] && echo -e "${RED}Error: Invalid project name${NC}" >&2 && exit 1
+[ -d "$TARGET_DIR" ] && echo -e "${RED}Error: Directory exists: $TARGET_DIR${NC}" >&2 && exit 1
 
-# Check if target directory already exists
-if [ -d "$TARGET_DIR" ]; then
-  echo -e "${RED}Error: Directory already exists: $TARGET_DIR${NC}" >&2
-  exit 1
-fi
-
-echo -e "${GREEN}🦞 Creating new project: $PROJECT_NAME${NC}"
-echo ""
-
-# Create target directory
-echo "📁 Creating directory: $TARGET_DIR"
+echo -e "${GREEN}🦞 Creating new $LANGUAGE project: $PROJECT_NAME${NC}"
 mkdir -p "$TARGET_DIR"
+cp -r "$TEMPLATE_DIR"/. "$TARGET_DIR/"
 
-# Copy template files
-echo "📋 Copying template files..."
-cp -r "$TEMPLATE_DIR"/* "$TARGET_DIR/"
-cp -r "$TEMPLATE_DIR"/.* "$TARGET_DIR/" 2>/dev/null || true
+if [ "$LANGUAGE" != "base" ]; then
+  for file in "$TEMPLATE_BASE_DIR/base"/*; do
+    filename=$(basename "$file")
+    [ ! -e "$TARGET_DIR/$filename" ] && cp -r "$file" "$TARGET_DIR/"
+  done
+fi
 
-# Update package.json with project name
-echo "📝 Updating package.json..."
 cd "$TARGET_DIR"
+[ -f "package.json" ] && sed -i.bak "s/\"name\": \"my-project\"/\"name\": \"$PROJECT_NAME\"/" package.json && rm -f package.json.bak
 
-# Use sed to replace project name
-sed -i.bak "s/\"name\": \"my-project\"/\"name\": \"$PROJECT_NAME\"/" package.json
-rm package.json.bak
-
-echo ""
-echo -e "${GREEN}✅ Project created successfully!${NC}"
-echo ""
-echo "Next steps:"
-echo ""
-echo "  cd $TARGET_DIR"
-echo "  npm install              # Install dependencies"
-echo "  npx prek install         # Install pre-commit hooks"
-echo "  git init                 # Initialize git repository (optional)"
-echo "  git add .                # Stage all files"
-echo "  git commit -m 'Initial commit'"
-echo ""
-echo "Development commands:"
-echo ""
-echo "  npm run build            # Build TypeScript"
-echo "  npm test                 # Run tests"
-echo "  npm run lint             # Check linting"
-echo "  npm run format:fix       # Auto-format code"
-echo "  npm run check            # Run all quality checks"
-echo ""
-echo -e "${YELLOW}📖 Don't forget to customize:${NC}"
-echo "  - package.json (description, author, license)"
-echo "  - AGENTS.md (project-specific guidelines)"
-echo "  - README.md (replace template content)"
-echo ""
-echo -e "${GREEN}Happy coding! 🚀${NC}"
+echo -e "${GREEN}✅ Project created: $TARGET_DIR${NC}"

@@ -14,25 +14,38 @@ This guide helps you learn from OpenClaw's architecture, patterns, and best prac
 
 ## 🚀 Quick Start: Project Scaffolding
 
-**NEW**: Use our ready-to-go project template based on OpenClaw patterns!
+**NEW**: Use our ready-to-go project templates for any language!
 
 ```bash
-# Create a new project from the template
+# TypeScript (default)
 ./scripts/scaffold-project.sh my-awesome-project
 
-# Or manually copy the template
-cp -r templates/project-scaffolding my-project
-cd my-project
-npm install && npx prek install
+# C#/.NET
+./scripts/scaffold-project.sh --lang csharp MyDotNetApp
+
+# Ruby
+./scripts/scaffold-project.sh --lang ruby my-ruby-app
+
+# Python
+./scripts/scaffold-project.sh --lang python my-python-app
+
+# Generic template (customize for your language)
+./scripts/scaffold-project.sh --lang base my-custom-project
 ```
 
 **What you get:**
-- ✅ TypeScript with strict mode
-- ✅ Modern tools (Oxlint, Oxfmt, Vitest)
-- ✅ Pre-commit hooks
+- ✅ Language-specific best practices
 - ✅ AI assistant ready (AGENTS.md)
-- ✅ GitHub Actions CI
+- ✅ Quality gates and testing
+- ✅ CI/CD configuration
 - ✅ VSCode integration
+
+**Supported languages:**
+- TypeScript - Oxlint, Oxfmt, Vitest
+- C#/.NET - Modern .NET tooling
+- Ruby - RuboCop, RSpec
+- Python - Black, Ruff, pytest
+- Base - Generic (customize for any language)
 
 See [templates/README.md](../../templates/README.md) for details.
 
