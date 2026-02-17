@@ -8,6 +8,12 @@ Welcome to the lobster tank! 🦞
 - **Discord:** https://discord.gg/qkhbAGHRBT
 - **X/Twitter:** [@steipete](https://x.com/steipete) / [@openclaw](https://x.com/openclaw)
 
+## For Learners & New Projects
+
+If you're here to **learn from OpenClaw** and build your own projects:
+- **[Learning Guide](docs/reference/learning-guide.md)** - Comprehensive guide for learning patterns, architecture, and best practices
+- **Windows Users:** See the [Learning Guide Windows section](docs/reference/learning-guide.md#windows-setup-wsl2) for WSL2 setup
+
 ## Maintainers
 
 - **Peter Steinberger** - Benevolent Dictator
