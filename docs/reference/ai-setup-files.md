@@ -11,6 +11,10 @@ read_when:
 
 OpenClaw contains AI setup files that serve **two distinct purposes**. Understanding this dual nature is important for both contributors and users.
 
+**Quick navigation:**
+- **For AI coding assistants helping develop OpenClaw**: See [AI Coding Assistant Guide](ai-coding-assistant-guide.md)
+- **For users configuring their OpenClaw AI assistant**: See templates in `/docs/reference/templates/`
+
 ## The Dual Purpose
 
 ### 1. Development (Repository Contributors)

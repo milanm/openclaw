@@ -82,6 +82,8 @@ Please include in your PR:
 
 AI PRs are first-class citizens here. We just want transparency so reviewers know what to look for.
 
+**For AI coding assistants:** See the [AI Coding Assistant Guide](docs/reference/ai-coding-assistant-guide.md) for all development files, locations, and guidelines.
+
 **Note:** The repository contains AI setup files that serve dual purposes. See [AI Setup Files - Dual Purpose](docs/reference/ai-setup-files.md) for details on how `/AGENTS.md` and related files are used both for developing OpenClaw and for configuring users' OpenClaw AI assistants.
 
 ## Current Focus & Roadmap 🗺
