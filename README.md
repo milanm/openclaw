@@ -492,6 +492,8 @@ by Peter Steinberger and the community.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, maintainers, and how to submit PRs.
 AI/vibe-coded PRs welcome! 🤖
 
+**Note for contributors:** OpenClaw contains AI setup files (`AGENTS.md`, `.agents/`, `.github/instructions/`) that serve a dual purpose - they guide AI coding assistants helping _develop_ OpenClaw, while template files guide users configuring their _OpenClaw AI assistant_. See [docs/reference/ai-setup-files.md](docs/reference/ai-setup-files.md) for details.
+
 Special thanks to [Mario Zechner](https://mariozechner.at/) for his support and for
 [pi-mono](https://github.com/badlogic/pi-mono).
 Special thanks to Adam Doppelt for lobster.bot.

@@ -82,6 +82,8 @@ Please include in your PR:
 
 AI PRs are first-class citizens here. We just want transparency so reviewers know what to look for.
 
+**Note:** The repository contains AI setup files that serve dual purposes. See [AI Setup Files - Dual Purpose](docs/reference/ai-setup-files.md) for details on how `/AGENTS.md` and related files are used both for developing OpenClaw and for configuring users' OpenClaw AI assistants.
+
 ## Current Focus & Roadmap 🗺
 
 We are currently prioritizing:
